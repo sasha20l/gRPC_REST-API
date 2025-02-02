@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GameServiceNamespace";
+
+import "google/protobuf/wrappers.proto";
+
+service GameServiceProto {
+  // Метод получения списка игр
+  rpc GetGames (EmptyRequest) returns (GameList);
+  // Метод подключения к игре и проведения матча "Камень-Ножницы-Бумага"
+  rpc JoinGame (JoinGameRequest) returns (GameResult);
+}
+
+message EmptyRequest {}
+
+message GameList {
+  repeated Game Games = 1;
+}
+
+message Game {
+  string Id = 1;         // идентификатор матча
+  double Stake = 2;      // ставка матча
+  string Status = 3;     // статус игры (например, "Waiting for player")
+}
+
+message JoinGameRequest {
+  string MatchId = 1;      // идентификатор матча
+  string PlayerId = 2;     // идентификатор игрока
+  // Выбор игрока (K - камень, N - ножницы, B - бумага)
+  string PlayerChoice = 3;
+}
+
+message GameResult {
+  string Result = 1;    // результат игры (например, "Player1 wins", "Draw" и т.д.)
+}
