@@ -1,5 +1,6 @@
-﻿using Domain.Interface;
+﻿
 using Infrastructure.DbCont;
+using Infrastructure.Interface;
 
 namespace Infrastructure.Repositiry
 {
@@ -14,18 +15,18 @@ namespace Infrastructure.Repositiry
             _context = context;
         }
 
-        public long Create(MatchHistory item)
+        public async Task<long> Create(MatchHistory item)
         {
-            _context.MatchHistory.Add(item);
-            _context.SaveChanges();
+            await _context.MatchHistory.AddAsync(item);
+            await _context.SaveChangesAsync();
             return item.MatchHistoryId;
         }
 
-        public bool Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-                MatchHistory entity = _context.MatchHistory.Find(id);
+                MatchHistory entity = await _context.MatchHistory.FindAsync(id);
                 entity.IsDeleted = true;
-                return Commit();
+                return await Commit();
         }
 
         public IReadOnlyList<MatchHistory> GetAll()
@@ -38,7 +39,7 @@ namespace Infrastructure.Repositiry
                 return _context.MatchHistory.FirstOrDefault(x => x.IsDeleted == false && x.MatchHistoryId == id);
         }
 
-        public bool Update(MatchHistory item)
+        public async Task<bool> Update(MatchHistory item)
         {
                 if (item == null)
                     throw new Exception("Cargo is null.");
@@ -55,13 +56,13 @@ namespace Infrastructure.Repositiry
                 employee.Player2 = item.Player2;
                 employee.Winner = item.Winner;
 
-        _context.SaveChanges(true);
+                await _context.SaveChangesAsync(true);
                 return true;
         }
 
-        private bool Commit()
+        private async Task<bool> Commit()
         {
-            int count = _context.SaveChanges();
+            int count = await _context.SaveChangesAsync();
             return count > 0;
         }
     }

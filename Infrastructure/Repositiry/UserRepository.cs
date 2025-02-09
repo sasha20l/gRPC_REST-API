@@ -1,5 +1,6 @@
-﻿using Domain.Interface;
+﻿
 using Infrastructure.DbCont;
+using Infrastructure.Interface;
 
 namespace Infrastructure.Repositiry
 {
@@ -14,18 +15,31 @@ namespace Infrastructure.Repositiry
             _context = context;
         }
 
-        public long Create(User item)
+        public async Task<long> Create(User item)
         {
-            _context.User.Add(item);
-            _context.SaveChanges();
-            return item.UserId;
+            try
+            {    
+                await _context.User.AddAsync(item);
+                await _context.SaveChangesAsync();
+                return item.UserId;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ошибка при сохранении: " + ex.Message);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Внутреннее исключение: {ex.InnerException.Message}");
+                }
+                return 0;
+            }
+
         }
 
-        public bool Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-                User entity = _context.User.Find(id);
+                User entity = await _context.User.FindAsync(id);
                 entity.IsDeleted = true;
-                return Commit();
+                return await Commit();
         }
 
         public IReadOnlyList<User> GetAll()
@@ -38,7 +52,7 @@ namespace Infrastructure.Repositiry
                 return _context.User.FirstOrDefault(x => x.IsDeleted == false && x.UserId == id);
         }
 
-        public bool Update(User item)
+        public async Task<bool> Update(User item)
         {
                 if (item == null)
                     throw new Exception("Cargo is null.");
@@ -51,13 +65,13 @@ namespace Infrastructure.Repositiry
                 employee.CreatedAt = item.CreatedAt;
 
 
-            _context.SaveChanges(true);
+            await _context.SaveChangesAsync(true);
                 return true;
         }
 
-        private bool Commit()
+        private async Task<bool> Commit()
         {
-            int count = _context.SaveChanges();
+            int count = await _context.SaveChangesAsync();
             return count > 0;
         }
     }

@@ -18,7 +18,7 @@ namespace Infrastructure
         [Column(TypeName = "bigint")]
         public long fkToUserId { get; set; }
 
-        public decimal Amount { get; set; }
+        public double Amount { get; set; }
 
         [Column, StringLength(255)]
         public string Reason { get; set; }

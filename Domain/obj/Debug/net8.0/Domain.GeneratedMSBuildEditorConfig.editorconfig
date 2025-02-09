@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Domain
-build_property.ProjectDir = C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask_1\gRPC_REST-API\Domain\
+build_property.ProjectDir = C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\Domain\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

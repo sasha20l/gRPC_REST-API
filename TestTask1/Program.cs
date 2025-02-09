@@ -1,3 +1,4 @@
+using GameServer;
 using Infrastructure.DbCont;
 using Infrastructure.Repositiry;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
@@ -14,7 +15,7 @@ namespace TestTask1
 
             builder.WebHost.ConfigureKestrel(options =>
             {
-                options.Listen(IPAddress.Any, 5002, listenOptions =>
+                options.Listen(IPAddress.Any, 5001, listenOptions =>
                 {
                     listenOptions.Protocols = HttpProtocols.Http2;
                 });
@@ -41,6 +42,11 @@ namespace TestTask1
             app.UseAuthorization();
 
             app.MapControllers();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapGrpcService<GameService>();
+            });
 
             app.Run();
         }

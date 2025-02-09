@@ -18,7 +18,7 @@ namespace Infrastructure
         [Column, StringLength(255)]
         public string UserName { get; set; }
 
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsDeleted { get; set; }
 

@@ -18,7 +18,7 @@ namespace Infrastructure
         [Column(TypeName = "bigint")]
         public long? fkPlayer2Id { get; set; } // Игрок 2; может быть null, если ещё нет второго игрока
 
-        public decimal Stake { get; set; }
+        public double Stake { get; set; }
 
         [ForeignKey(nameof(Winner))]
         [Column(TypeName = "bigint")]

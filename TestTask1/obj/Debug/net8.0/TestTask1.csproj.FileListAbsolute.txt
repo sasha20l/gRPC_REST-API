@@ -106,9 +106,7 @@ C:\Users\Asus\Desktop\Мои разработки\тестовое задани�
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Npgsql.dll
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
-C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Domain.dll
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Infrastructure.dll
-C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Domain.pdb
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Infrastructure.pdb
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Google.Protobuf.dll
 C:\Users\Asus\Desktop\Мои разработки\тестовое задание\gRPC\TestTask1\TestTask1\bin\Debug\net8.0\Grpc.AspNetCore.Server.dll

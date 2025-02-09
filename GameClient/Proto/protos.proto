@@ -9,6 +9,24 @@ service GameServiceProto {
   rpc GetGames (EmptyRequest) returns (GameList);
   // Метод подключения к игре и проведения матча "Камень-Ножницы-Бумага"
   rpc JoinGame (JoinGameRequest) returns (GameResult);
+
+  rpc TransferMoney (TransferRequest) returns (RpcStatus);
+  rpc CreateMatch (CreateMatchRequest) returns (RpcStatus);
+}
+
+message RpcStatus {
+  string message = 1;
+}
+
+message TransferRequest {
+  int64 FromUserId = 1;
+  int64 ToUserId = 2;
+  double Amount = 3;
+}
+
+message CreateMatchRequest {
+  int64 Player1Id = 1;
+  double Stake = 2;
 }
 
 message EmptyRequest {}

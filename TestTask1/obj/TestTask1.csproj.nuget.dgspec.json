@@ -4,61 +4,6 @@
     "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\TestTask1\\TestTask1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj",
-        "projectName": "Domain",
-        "projectPath": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {}
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
     "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -82,11 +27,7 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {
-              "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -162,9 +103,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Domain\\Domain.csproj"
-              },
               "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\Asus\\Desktop\\Мои разработки\\тестовое задание\\gRPC\\TestTask1\\Infrastructure\\Infrastructure.csproj"
               }
@@ -186,6 +124,10 @@
               "version": "[3.29.3, )"
             },
             "Grpc.AspNetCore": {
+              "target": "Package",
+              "version": "[2.67.0, )"
+            },
+            "Grpc.Net.Client": {
               "target": "Package",
               "version": "[2.67.0, )"
             },

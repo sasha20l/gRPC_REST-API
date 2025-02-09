@@ -53,6 +53,12 @@ namespace GameServiceNamespace {
     static readonly grpc::Marshaller<global::GameServiceNamespace.JoinGameRequest> __Marshaller_JoinGameRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameServiceNamespace.JoinGameRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::GameServiceNamespace.GameResult> __Marshaller_GameResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameServiceNamespace.GameResult.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GameServiceNamespace.TransferRequest> __Marshaller_TransferRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameServiceNamespace.TransferRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GameServiceNamespace.RpcStatus> __Marshaller_RpcStatus = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameServiceNamespace.RpcStatus.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::GameServiceNamespace.CreateMatchRequest> __Marshaller_CreateMatchRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::GameServiceNamespace.CreateMatchRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::GameServiceNamespace.EmptyRequest, global::GameServiceNamespace.GameList> __Method_GetGames = new grpc::Method<global::GameServiceNamespace.EmptyRequest, global::GameServiceNamespace.GameList>(
@@ -69,6 +75,22 @@ namespace GameServiceNamespace {
         "JoinGame",
         __Marshaller_JoinGameRequest,
         __Marshaller_GameResult);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GameServiceNamespace.TransferRequest, global::GameServiceNamespace.RpcStatus> __Method_TransferMoney = new grpc::Method<global::GameServiceNamespace.TransferRequest, global::GameServiceNamespace.RpcStatus>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "TransferMoney",
+        __Marshaller_TransferRequest,
+        __Marshaller_RpcStatus);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::GameServiceNamespace.CreateMatchRequest, global::GameServiceNamespace.RpcStatus> __Method_CreateMatch = new grpc::Method<global::GameServiceNamespace.CreateMatchRequest, global::GameServiceNamespace.RpcStatus>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateMatch",
+        __Marshaller_CreateMatchRequest,
+        __Marshaller_RpcStatus);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -100,6 +122,18 @@ namespace GameServiceNamespace {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::GameServiceNamespace.GameResult> JoinGame(global::GameServiceNamespace.JoinGameRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::GameServiceNamespace.RpcStatus> TransferMoney(global::GameServiceNamespace.TransferRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::GameServiceNamespace.RpcStatus> CreateMatch(global::GameServiceNamespace.CreateMatchRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -229,6 +263,46 @@ namespace GameServiceNamespace {
       {
         return CallInvoker.AsyncUnaryCall(__Method_JoinGame, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::GameServiceNamespace.RpcStatus TransferMoney(global::GameServiceNamespace.TransferRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return TransferMoney(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::GameServiceNamespace.RpcStatus TransferMoney(global::GameServiceNamespace.TransferRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_TransferMoney, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::GameServiceNamespace.RpcStatus> TransferMoneyAsync(global::GameServiceNamespace.TransferRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return TransferMoneyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::GameServiceNamespace.RpcStatus> TransferMoneyAsync(global::GameServiceNamespace.TransferRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_TransferMoney, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::GameServiceNamespace.RpcStatus CreateMatch(global::GameServiceNamespace.CreateMatchRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateMatch(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::GameServiceNamespace.RpcStatus CreateMatch(global::GameServiceNamespace.CreateMatchRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateMatch, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::GameServiceNamespace.RpcStatus> CreateMatchAsync(global::GameServiceNamespace.CreateMatchRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateMatchAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::GameServiceNamespace.RpcStatus> CreateMatchAsync(global::GameServiceNamespace.CreateMatchRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateMatch, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override GameServiceProtoClient NewInstance(ClientBaseConfiguration configuration)
@@ -244,7 +318,9 @@ namespace GameServiceNamespace {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_GetGames, serviceImpl.GetGames)
-          .AddMethod(__Method_JoinGame, serviceImpl.JoinGame).Build();
+          .AddMethod(__Method_JoinGame, serviceImpl.JoinGame)
+          .AddMethod(__Method_TransferMoney, serviceImpl.TransferMoney)
+          .AddMethod(__Method_CreateMatch, serviceImpl.CreateMatch).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -256,6 +332,8 @@ namespace GameServiceNamespace {
     {
       serviceBinder.AddMethod(__Method_GetGames, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GameServiceNamespace.EmptyRequest, global::GameServiceNamespace.GameList>(serviceImpl.GetGames));
       serviceBinder.AddMethod(__Method_JoinGame, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GameServiceNamespace.JoinGameRequest, global::GameServiceNamespace.GameResult>(serviceImpl.JoinGame));
+      serviceBinder.AddMethod(__Method_TransferMoney, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GameServiceNamespace.TransferRequest, global::GameServiceNamespace.RpcStatus>(serviceImpl.TransferMoney));
+      serviceBinder.AddMethod(__Method_CreateMatch, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GameServiceNamespace.CreateMatchRequest, global::GameServiceNamespace.RpcStatus>(serviceImpl.CreateMatch));
     }
 
   }

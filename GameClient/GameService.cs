@@ -17,6 +17,78 @@ namespace GameServer
             _dbContext = dbContext;
         }
 
+        public override async Task<RpcStatus> TransferMoney(TransferRequest request, ServerCallContext context)
+        {
+            RpcStatus rpcStatus = new RpcStatus();
+
+            var fromUser = await _dbContext.User.FirstOrDefaultAsync(u => u.UserId == request.FromUserId && !u.IsDeleted);
+            var toUser = await _dbContext.User.FirstOrDefaultAsync(u => u.UserId == request.ToUserId && !u.IsDeleted);
+
+            if (fromUser == null || toUser == null)
+            {
+                rpcStatus.Message = "Пользователь не найден";
+                return rpcStatus;
+            }
+
+            if (fromUser.Balance < request.Amount)
+            {
+                rpcStatus.Message = "Недостаточно средств";
+                return rpcStatus;
+            }
+
+            fromUser.Balance -= request.Amount;
+            toUser.Balance += request.Amount;
+
+            var transaction = new GameTransactions
+            {
+                fkFromUserId = fromUser.UserId,
+                fkToUserId = toUser.UserId,
+                Amount = request.Amount,
+                Reason = "Manual transfer",
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false
+            };
+
+            _dbContext.GameTransactions.Add(transaction);
+            await _dbContext.SaveChangesAsync();
+
+            rpcStatus.Message = "Перевод выполнен успешно";
+            return rpcStatus;
+        }
+
+        public override async Task<RpcStatus> CreateMatch(CreateMatchRequest request, ServerCallContext context)
+        {
+            RpcStatus rpcStatus = new RpcStatus();
+
+            var user = await _dbContext.User.FirstOrDefaultAsync(u => u.UserId == request.Player1Id && !u.IsDeleted);
+            if (user == null)
+            {
+                rpcStatus.Message = "Пользователь не найден";
+                return rpcStatus;
+            }
+
+            if (user.Balance < request.Stake)
+            {
+                rpcStatus.Message = "Недостаточно средств для создания матча";
+                return rpcStatus;
+            }
+
+            var match = new MatchHistory
+            {
+                fkPlayer1Id = request.Player1Id,
+                Stake = request.Stake,
+                CreatedAt = DateTime.UtcNow,
+                IsDeleted = false
+            };
+
+            _dbContext.MatchHistory.Add(match);
+            await _dbContext.SaveChangesAsync();
+
+            rpcStatus.Message = $"ID матча = {match.MatchHistoryId}";
+
+            return rpcStatus;
+        }
+
         // Получение списка игр, в которых пока нет второго игрока
         public override async Task<GameList> GetGames(EmptyRequest request, ServerCallContext context)
         {

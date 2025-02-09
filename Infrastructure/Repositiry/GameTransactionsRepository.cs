@@ -1,5 +1,6 @@
-﻿using Domain.Interface;
+﻿
 using Infrastructure.DbCont;
+using Infrastructure.Interface;
 
 namespace Infrastructure.Repositiry
 {
@@ -14,18 +15,18 @@ namespace Infrastructure.Repositiry
             _context = context;
         }
 
-        public long Create(GameTransactions item)
+        public async Task<long> Create(GameTransactions item)
         {
-            _context.GameTransactions.Add(item);
-            _context.SaveChanges();
+            await _context.GameTransactions.AddAsync(item);
+            await _context.SaveChangesAsync();
             return item.GameTransactionsId;
         }
 
-        public bool Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-                GameTransactions entity = _context.GameTransactions.Find(id);
-                entity.IsDeleted = true;
-                return Commit();
+            GameTransactions entity = await _context.GameTransactions.FindAsync(id);
+            entity.IsDeleted = true;
+            return await Commit();
         }
 
         public IReadOnlyList<GameTransactions> GetAll()
@@ -38,7 +39,7 @@ namespace Infrastructure.Repositiry
                 return _context.GameTransactions.FirstOrDefault(x => x.IsDeleted == false && x.GameTransactionsId == id);
         }
 
-        public bool Update(GameTransactions item)
+        public async Task<bool> Update(GameTransactions item)
         {
                 if (item == null)
                     throw new Exception("GameTransactions is null.");
@@ -55,13 +56,13 @@ namespace Infrastructure.Repositiry
                 employee.ToUser = item.ToUser;
                 employee.IsDeleted = item.IsDeleted;
 
-        _context.SaveChanges(true);
+                await _context.SaveChangesAsync(true);
                 return true;
         }
 
-        private bool Commit()
+        private async Task<bool> Commit()
         {
-            int count = _context.SaveChanges();
+            int count = await _context.SaveChangesAsync();
             return count > 0;
         }
     }
