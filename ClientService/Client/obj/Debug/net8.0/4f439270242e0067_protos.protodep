@@ -1,0 +1,3 @@
+obj\Debug\net8.0/Protos.cs \
+obj\Debug\net8.0/ProtosGrpc.cs: C:/Users/Asus/.nuget/packages/grpc.tools/2.69.0/build/native/include/google/protobuf/wrappers.proto\
+ ../TestTask1/Proto/protos.proto
